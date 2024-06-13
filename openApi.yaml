@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: aula4
+  title: aula5
   version: 1.0.0
 servers:
   - url: http://{{host}}
@@ -8,7 +8,7 @@ paths:
   /pacotes:
     get:
       tags:
-        - default
+        - Pacotes
       summary: Lista pacotes
       responses:
         "200":
@@ -19,17 +19,17 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Pacote'
+        default:
+          description: Unexpected error
     post:
       tags:
-        - default
+        - Pacotes
       summary: Cria pacote
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              type: object
-              items:
                 $ref: '#/components/schemas/Pacote'
       responses:
         "201":
@@ -37,15 +37,13 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                items:
                   $ref: '#/components/schemas/Pacote'
         default:
           description: Unexpected error
   /pacotes/{id}:
     get:
       tags:
-        - default
+        - Pacotes
       summary: Obtem pacote
       parameters:
         - name: id
@@ -59,8 +57,6 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                items:
                   $ref: '#/components/schemas/Pacote'
         "404":
           description: Not found
@@ -71,9 +67,11 @@ paths:
                 properties:
                   message:
                     type: string
+        default:
+          description: Unexpected error
     delete:
       tags:
-        - default
+        - Pacotes
       summary: Delete pacote
       parameters:
         - name: id
@@ -99,7 +97,7 @@ paths:
           description: Unexpected error
     put:
       tags:
-        - default
+        - Pacotes
       summary: Altera pacote
       requestBody:
         required: true
@@ -117,7 +115,9 @@ paths:
         "200":
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pacote'
         "404":
           description: Not found
           content:
