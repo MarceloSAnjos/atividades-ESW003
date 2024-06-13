@@ -14,7 +14,34 @@ paths:
         "200":
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pacote'
+    post:
+      tags:
+        - default
+      summary: Cria pacote
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              items:
+                $ref: '#/components/schemas/Pacote'
+      responses:
+        "201":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/Pacote'
+        default:
+          description: Unexpected error
   /pacotes/{id}:
     get:
       tags:
@@ -30,7 +57,20 @@ paths:
         "200":
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/Pacote'
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
     delete:
       tags:
         - default
@@ -42,37 +82,31 @@ paths:
             type: string
           required: true
       responses:
-        "200":
-          description: Successful response
+        "204":
+          description: Successful deletion
           content:
             application/json: {}
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        default:
+          description: Unexpected error
     put:
       tags:
         - default
       summary: Altera pacote
       requestBody:
+        required: true
         content:
           application/json:
             schema:
-              type: object
-              example:
-                localidade:
-                  descricao: Macedo de Cavaleiros
-                descricao: >-
-                  Sint beatae vitae. Iste laborum illo dolor et. Molestiae velit
-                  rerum consequatur rerum quis. Pariatur quaerat expedita sed
-                  doloremque quibusdam. Quibusdam unde nobis dolores sed.
-                items:
-                  - preco: 732.36
-                    nomeHotel: Xavier ComÃ©rcio
-                    endereco: 49658 Rodovia Larissa, Senhora da Hora, DF 42186-841
-                  - preco: 233.9
-                    companiaAerea: Muniz EIRELI
-                    numeroVoo: SweetCode767365
-                  - preco: 230.62
-                    marca: Paiva, Paiva e Paiva
-                    modelo: Oliveira LTDA
-                valor: 20000.9
+              $ref: '#/components/schemas/Pacote'
       parameters:
         - name: id
           in: path
@@ -84,36 +118,69 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  //pacotes:
-    post:
-      tags:
-        - default
-      summary: Cria pacote
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                localidade:
-                  descricao: Macedo de Cavaleiros
-                descricao: >-
-                  Sint beatae vitae. Iste laborum illo dolor et. Molestiae velit
-                  rerum consequatur rerum quis. Pariatur quaerat expedita sed
-                  doloremque quibusdam. Quibusdam unde nobis dolores sed.
-                items:
-                  - preco: 732.36
-                    nomeHotel: Xavier ComÃ©rcio
-                    endereco: 49658 Rodovia Larissa, Senhora da Hora, DF 42186-841
-                  - preco: 233.9
-                    companiaAerea: Muniz EIRELI
-                    numeroVoo: SweetCode767365
-                  - preco: 230.62
-                    marca: Paiva, Paiva e Paiva
-                    modelo: Oliveira LTDA
-                valor: 1196.88
-      responses:
-        "200":
-          description: Successful response
+        "404":
+          description: Not found
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        default:
+            description: Unexpected error
+components:
+  schemas:
+    Localidade:
+      type: object
+      properties:
+        descricao:
+          type: string
+    Hospedagem:
+      allOf:
+        - $ref: '#/components/schemas/ItemPacote'
+        - type: object
+          properties:
+            nomeHotel:
+              type: string
+            endereco:
+              type: string
+    LocacaoVeiculo:
+      allOf:
+        - $ref: '#/components/schemas/ItemPacote'
+        - type: object
+          properties:
+            marca:
+              type: string
+            modelo:
+              type: string
+    TransladoAereo:
+      allOf:
+        - $ref: '#/components/schemas/ItemPacote'
+        - type: object
+          properties:
+            companiaAerea:
+              type: string
+            numeroVoo:
+              type: string
+    ItemPacote:
+      type: object
+      properties:
+        preco:
+          type: number
+    Pacote:
+      type: object
+      properties:
+        localidade:
+          $ref: '#/components/schemas/Localidade'
+        descricao:
+          type: string
+        items:
+          type: array
+          items:
+            oneOf:
+              - $ref: '#/components/schemas/Hospedagem'
+              - $ref: '#/components/schemas/LocacaoVeiculo'
+              - $ref: '#/components/schemas/TransladoAereo'
+        valor:
+          type: number
