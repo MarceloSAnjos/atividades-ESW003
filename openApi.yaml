@@ -1,112 +1,119 @@
-/pacotes:
-  get:
-    tags:
-      - default
-    summary: Lista pacotes
-    responses:
-      "200":
-        description: Successful response
-        content:
-          application/json: {}
-/pacotes/{id}:
-  get:
-    tags:
-      - default
-    summary: Obtem pacote
-    parameters:
-      - name: id
-        in: path
-        schema:
-          type: string
-        required: true
-    responses:
-      "200":
-        description: Successful response
-        content:
-          application/json: {}
-  delete:
-    tags:
-      - default
-    summary: Delete pacote
-    parameters:
-      - name: id
-        in: path
-        schema:
-          type: string
-        required: true
-    responses:
-      "200":
-        description: Successful response
-        content:
-          application/json: {}
-  put:
-    tags:
-      - default
-    summary: Altera pacote
-    requestBody:
-      content:
-        application/json:
+openapi: 3.0.0
+info:
+  title: aula4
+  version: 1.0.0
+servers:
+  - url: http://{{host}}
+paths:
+  /pacotes:
+    get:
+      tags:
+        - default
+      summary: Lista pacotes
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  /pacotes/{id}:
+    get:
+      tags:
+        - default
+      summary: Obtem pacote
+      parameters:
+        - name: id
+          in: path
           schema:
-            type: object
-            example:
-              localidade:
-                descricao: Macedo de Cavaleiros
-              descricao: >-
-                Sint beatae vitae. Iste laborum illo dolor et. Molestiae velit
-                rerum consequatur rerum quis. Pariatur quaerat expedita sed
-                doloremque quibusdam. Quibusdam unde nobis dolores sed.
-              items:
-                - preco: 732.36
-                  nomeHotel: Xavier ComÃ©rcio
-                  endereco: 49658 Rodovia Larissa, Senhora da Hora, DF 42186-841
-                - preco: 233.9
-                  companiaAerea: Muniz EIRELI
-                  numeroVoo: SweetCode767365
-                - preco: 230.62
-                  marca: Paiva, Paiva e Paiva
-                  modelo: Oliveira LTDA
-              valor: 20000.9
-    parameters:
-      - name: id
-        in: path
-        schema:
-          type: string
-        required: true
-    responses:
-      "200":
-        description: Successful response
-        content:
-          application/json: {}
-//pacotes:
-  post:
-    tags:
-      - default
-    summary: Cria pacote
-    requestBody:
-      content:
-        application/json:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - default
+      summary: Delete pacote
+      parameters:
+        - name: id
+          in: path
           schema:
-            type: object
-            example:
-              localidade:
-                descricao: Macedo de Cavaleiros
-              descricao: >-
-                Sint beatae vitae. Iste laborum illo dolor et. Molestiae velit
-                rerum consequatur rerum quis. Pariatur quaerat expedita sed
-                doloremque quibusdam. Quibusdam unde nobis dolores sed.
-              items:
-                - preco: 732.36
-                  nomeHotel: Xavier ComÃ©rcio
-                  endereco: 49658 Rodovia Larissa, Senhora da Hora, DF 42186-841
-                - preco: 233.9
-                  companiaAerea: Muniz EIRELI
-                  numeroVoo: SweetCode767365
-                - preco: 230.62
-                  marca: Paiva, Paiva e Paiva
-                  modelo: Oliveira LTDA
-              valor: 1196.88
-    responses:
-      "200":
-        description: Successful response
+            type: string
+          required: true
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - default
+      summary: Altera pacote
+      requestBody:
         content:
-          application/json: {}
+          application/json:
+            schema:
+              type: object
+              example:
+                localidade:
+                  descricao: Macedo de Cavaleiros
+                descricao: >-
+                  Sint beatae vitae. Iste laborum illo dolor et. Molestiae velit
+                  rerum consequatur rerum quis. Pariatur quaerat expedita sed
+                  doloremque quibusdam. Quibusdam unde nobis dolores sed.
+                items:
+                  - preco: 732.36
+                    nomeHotel: Xavier ComÃ©rcio
+                    endereco: 49658 Rodovia Larissa, Senhora da Hora, DF 42186-841
+                  - preco: 233.9
+                    companiaAerea: Muniz EIRELI
+                    numeroVoo: SweetCode767365
+                  - preco: 230.62
+                    marca: Paiva, Paiva e Paiva
+                    modelo: Oliveira LTDA
+                valor: 20000.9
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
+  //pacotes:
+    post:
+      tags:
+        - default
+      summary: Cria pacote
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                localidade:
+                  descricao: Macedo de Cavaleiros
+                descricao: >-
+                  Sint beatae vitae. Iste laborum illo dolor et. Molestiae velit
+                  rerum consequatur rerum quis. Pariatur quaerat expedita sed
+                  doloremque quibusdam. Quibusdam unde nobis dolores sed.
+                items:
+                  - preco: 732.36
+                    nomeHotel: Xavier ComÃ©rcio
+                    endereco: 49658 Rodovia Larissa, Senhora da Hora, DF 42186-841
+                  - preco: 233.9
+                    companiaAerea: Muniz EIRELI
+                    numeroVoo: SweetCode767365
+                  - preco: 230.62
+                    marca: Paiva, Paiva e Paiva
+                    modelo: Oliveira LTDA
+                valor: 1196.88
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}
