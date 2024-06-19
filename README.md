@@ -1,4 +1,4 @@
-# Tarefa Aula 2
+# Projeto de Programação Backend e Frontend
 
 ## Pre-requisitos
 
