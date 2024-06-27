@@ -1,8 +1,9 @@
 
 import styled from 'styled-components';
-import { loadPacotes } from './stub.js';
+import { loadPacotes } from '../../stub';
 
 const InnerButton = styled.button`
+    padding: 8px;
 `;
 
 function Button(props) {
