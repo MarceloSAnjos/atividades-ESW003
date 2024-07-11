@@ -13,10 +13,13 @@ function Localidades() {
   };
 
   const localidades = useLoaderData();
+  const selectLocalidade = (id) => {
+    navigate(`/localidades/${id}`);
+  }
 
   if (localidades?.length === 0) {
     return (
-      <p>Nenhum pacote carregado</p>
+      <p>Nenhuma localidade carregada</p>
     );
   }
 
@@ -28,8 +31,11 @@ function Localidades() {
       <div className="cardsContainer">
         {localidades?.map(localidade => {
           return (
-            <div key={localidade.id} style={{ display: "flex", flexDirection: "column", padding: "24px", paddingTop: "0", backgroundColor: "plum", borderRadius: "8px", width: "320px", marginBottom: "8px", marginRight: "8px" }}>
-              {/* <h3 style={{ marginBottom: "8px" }}>{localidade.title}</h3> */}
+            <div
+              key={localidade.id}
+              style={{ display: "flex", flexDirection: "column", padding: "24px", paddingTop: "0", backgroundColor: "plum", borderRadius: "8px", width: "320px", marginBottom: "8px", marginRight: "8px" }}
+              onClick={() => selectLocalidade(localidade.id)}
+            >
               <p>{localidade.descricao}</p>
             </div>
           )
