@@ -19,6 +19,14 @@ public class Localidade {
     @Column(name = "DESCRICAO")
     private String descricao;
 
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
     public String getDescricao() {
         return descricao;
     }
