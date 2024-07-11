@@ -1,6 +1,35 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
 import "./localidades.css";
 import Criteria from "../criteria/Criteria";
+import styled from 'styled-components';
+
+const CardsWrapper = styled.div`
+  display: grid;
+  grid-template-areas: "card card card";
+  max-width: 1260px;
+`;
+
+const LocalidadeWrapper = styled.div`
+  display: "flex";
+  flex-direction: "column";
+`;
+
+const Subtitle = styled.h2`
+  margin-bottom: "8px";
+  text-align: "center";
+`;
+
+const DescricaoWrapper = styled.div`
+  display: "flex";
+  flex-direction: "column";
+  padding: "24px";
+  padding-top: "0";
+  background-color: "plum";
+  border-radius: "8px";
+  width: "320px";
+  margin-bottom: "8px";
+  margin-right: "8px";
+`;
 
 function Localidades() {
   const navigate = useNavigate();
@@ -21,21 +50,19 @@ function Localidades() {
   }
 
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
+    <LocalidadeWrapper>
       <Criteria setCriteria={setCriteria} />
-      <h2 style={{ marginBottom: "8px", textAlign: "center" }}>Localidades</h2>
-
-      <div className="cardsContainer">
+      <Subtitle>Localidades</Subtitle>
+      <CardsWrapper>
         {localidades?.map(localidade => {
           return (
-            <div key={localidade.id} style={{ display: "flex", flexDirection: "column", padding: "24px", paddingTop: "0", backgroundColor: "plum", borderRadius: "8px", width: "320px", marginBottom: "8px", marginRight: "8px" }}>
-              {/* <h3 style={{ marginBottom: "8px" }}>{localidade.title}</h3> */}
+            <DescricaoWrapper key={localidade.id}>
               <p>{localidade.descricao}</p>
-            </div>
+            </DescricaoWrapper>
           )
         })}
-      </div>
-    </div>
+      </CardsWrapper>
+    </LocalidadeWrapper>
   );
 }
 
