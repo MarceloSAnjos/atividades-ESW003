@@ -1,10 +1,7 @@
 package br.com.pecepoli.demo.controller;
 
-
 import br.com.pecepoli.demo.domain.Pacote;
-import br.com.pecepoli.demo.repository.PacoteRepository;
 import br.com.pecepoli.demo.service.PacoteService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -16,8 +13,6 @@ import java.util.UUID;
 
 @RestController
 public class PacoteController {
-    @Autowired
-    private PacoteRepository repository;
 
     private final PacoteService pacoteService;
 
@@ -26,18 +21,19 @@ public class PacoteController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/pacotes")
-    public ResponseEntity<List<Pacote>> obterTodos(@RequestParam(name = "q", required = false) String criteria, Pageable pageable) {
+    public ResponseEntity<List<Pacote>> obterTodos(@RequestParam(name = "q", required = false) String criteria,
+            Pageable pageable) {
         Page<Pacote> pacotes = this.pacoteService.obterPacotes(criteria, pageable);
         return ResponseEntity.ok()
-                             .header("Access-Control-Allow-Headers", "*")
-                             .header("X-Total-Count", String.valueOf(pacotes.getTotalElements()))
-                             .body(pacotes.toList());
+                .header("Access-Control-Allow-Headers", "*")
+                .header("X-Total-Count", String.valueOf(pacotes.getTotalElements()))
+                .body(pacotes.toList());
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/pacotes/{id}")
     public ResponseEntity<Pacote> obter(@PathVariable("id") UUID id) {
         Optional<Pacote> pacote = this.pacoteService.obterPacote(id);
         return pacote.map(x -> ResponseEntity.ok(x))
-                     .orElseGet(() -> ResponseEntity.notFound().build());
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 }

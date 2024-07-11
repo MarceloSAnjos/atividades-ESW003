@@ -2,7 +2,6 @@ package br.com.pecepoli.demo.domain;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.annotations.UuidGenerator;
 
 import java.sql.Types;
 import java.time.LocalDate;
@@ -29,13 +28,21 @@ public class Cliente {
     @Transient
     private final List<Contratacao> contratacoes = new ArrayList<>();
 
-    public String getNome() { return nome; }
+    public String getNome() {
+        return nome;
+    }
 
-    public void setNome(String nome) { this.nome = nome; }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-    public LocalDate getDataNascimento() { return dataNascimento; }
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
 
-    public void setDataNascimento(LocalDate dataNascimento) { this.dataNascimento = dataNascimento; }
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
 
     public Contratacao contratar(Pacote pacote) {
         Contratacao contratacao = new Contratacao(this, pacote);

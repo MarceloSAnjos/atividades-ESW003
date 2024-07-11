@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import jakarta.persistence.*;
 import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.annotations.UuidGenerator;
 
 import java.sql.Types;
 import java.util.UUID;
@@ -12,14 +11,11 @@ import java.util.UUID;
 @Entity
 @Table(name = "ITEMS_PACOTE", indexes = @Index(columnList = "PACOTE_ID"))
 @Inheritance(strategy = InheritanceType.JOINED)
-@JsonTypeInfo(
-        use = JsonTypeInfo.Id.NAME,
-        include = JsonTypeInfo.As.PROPERTY,
-        property = "tipo")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "tipo")
 @JsonSubTypes({
-    @JsonSubTypes.Type(value = Hospedagem.class, name = "hotel"),
-    @JsonSubTypes.Type(value = LocacaoVeiculo.class, name = "veiculo"),
-    @JsonSubTypes.Type(value = TransladoAereo.class, name = "voo"),
+        @JsonSubTypes.Type(value = Hospedagem.class, name = "hotel"),
+        @JsonSubTypes.Type(value = LocacaoVeiculo.class, name = "veiculo"),
+        @JsonSubTypes.Type(value = TransladoAereo.class, name = "voo"),
 })
 public abstract class ItemPacote {
 
@@ -32,7 +28,11 @@ public abstract class ItemPacote {
     @Column(name = "PRECO")
     private double preco;
 
-    public void setPreco(double preco) { this.preco = preco; }
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
 
-    public double getPreco() { return this.preco; }
+    public double getPreco() {
+        return this.preco;
+    }
 }

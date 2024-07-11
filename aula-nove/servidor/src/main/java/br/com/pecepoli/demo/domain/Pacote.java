@@ -2,7 +2,6 @@ package br.com.pecepoli.demo.domain;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.annotations.UuidGenerator;
 
 import java.sql.Types;
 import java.util.ArrayList;
@@ -27,20 +26,29 @@ public class Pacote {
     @Column(name = "DESCRICAO", length = 1024)
     private String descricao;
 
-
     @OneToMany(orphanRemoval = true, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "PACOTE_ID", updatable = false, nullable = false)
     private final List<ItemPacote> items = new ArrayList<>();
 
-    public UUID getId() { return id; }
+    public UUID getId() {
+        return id;
+    }
 
-    public Localidade getLocalidade() { return localidade; }
+    public Localidade getLocalidade() {
+        return localidade;
+    }
 
-    public void setLocalidade(Localidade localidade) { this.localidade = localidade; }
+    public void setLocalidade(Localidade localidade) {
+        this.localidade = localidade;
+    }
 
-    public String getDescricao() { return descricao; }
+    public String getDescricao() {
+        return descricao;
+    }
 
-    public void setDescricao(String descricao) {this.descricao = descricao; }
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 
     public List<ItemPacote> getItems() {
         return Collections.unmodifiableList(items);
@@ -56,8 +64,8 @@ public class Pacote {
 
     public double getValor() {
         return getItems().stream()
-                         .mapToDouble(x -> x.getPreco())
-                         .sum();
+                .mapToDouble(x -> x.getPreco())
+                .sum();
     }
 
     @Override

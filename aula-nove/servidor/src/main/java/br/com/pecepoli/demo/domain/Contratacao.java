@@ -2,7 +2,6 @@ package br.com.pecepoli.demo.domain;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.annotations.UuidGenerator;
 
 import java.sql.Types;
 import java.time.LocalDate;
@@ -20,7 +19,6 @@ public class Contratacao {
 
     @Column(name = "VALOR")
     private final double valor;
-
 
     @Column(name = "DATA_CONTRACAO")
     private final LocalDate dataContratacao;
@@ -40,11 +38,19 @@ public class Contratacao {
         this.valor = pacote.getValor();
     }
 
-    public double getValor() { return valor; }
+    public double getValor() {
+        return valor;
+    }
 
-    public LocalDate getDataContratacao() { return dataContratacao; }
+    public LocalDate getDataContratacao() {
+        return dataContratacao;
+    }
 
-    public Cliente getCliente() { return cliente; }
+    public Cliente getCliente() {
+        return cliente;
+    }
 
-    public Pacote getPacote() { return pacote; }
+    public Pacote getPacote() {
+        return pacote;
+    }
 }

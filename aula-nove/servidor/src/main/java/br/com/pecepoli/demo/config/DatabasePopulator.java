@@ -8,7 +8,6 @@ import br.com.pecepoli.demo.utils.FakerFacade;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,20 +41,18 @@ public class DatabasePopulator {
 
     private List<Pacote> populatePacotes(List<Localidade> localidades) {
         List<Pacote> pacotes = new ArrayList<>(numeroPacotes);
-        for (int i=0; i<numeroPacotes; i++) {
+        for (int i = 0; i < numeroPacotes; i++) {
             pacotes.add(fakerFacade.pacoteDummy(localidades.get(0)));
         }
         return this.pacoteRepository.saveAll(pacotes);
     }
 
-
     private List<Localidade> populateLocalidades() {
         List<Localidade> localidades = new ArrayList<>(numeroLocalidades);
-        for (int i=0;i<numeroLocalidades; i++) {
+        for (int i = 0; i < numeroLocalidades; i++) {
             localidades.add(fakerFacade.localidadeDummy());
         }
         return this.localidadeRepository.saveAll(localidades);
     }
-
 
 }

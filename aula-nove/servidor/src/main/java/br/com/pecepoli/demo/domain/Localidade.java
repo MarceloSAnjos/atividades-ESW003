@@ -2,7 +2,6 @@ package br.com.pecepoli.demo.domain;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.annotations.UuidGenerator;
 
 import java.sql.Types;
 import java.util.UUID;
