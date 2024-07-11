@@ -20,9 +20,13 @@ public class Localidade {
     @Column(name = "DESCRICAO")
     private String descricao;
 
-    public String getDescricao() { return descricao; }
+    public String getDescricao() {
+        return descricao;
+    }
 
-    public void setDescricao(String descricao) {this.descricao = descricao; }
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 
     @Override
     public String toString() {

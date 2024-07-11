@@ -1,7 +1,7 @@
 package br.com.pecepoli.demo.service;
 
-import br.com.pecepoli.demo.domain.Pacote;
-import br.com.pecepoli.demo.repository.PacoteRepository;
+import br.com.pecepoli.demo.domain.Localidade;
+import br.com.pecepoli.demo.repository.LocalidadeRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -12,16 +12,16 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class PacoteService {
-    private final PacoteRepository repository;
+public class LocalidadeService {
+    private final LocalidadeRepository repository;
 
-    public PacoteService(PacoteRepository repository) {
+    public LocalidadeService(LocalidadeRepository repository) {
         this.repository = repository;
     }
 
-    public Page<Pacote> obterPacotes(String criteria, Pageable pageable) {
+    public Page<Localidade> obterLocalidades(String criteria, Pageable pageable) {
         Page<UUID> ids = findIds(criteria, pageable);
-        List<Pacote> pacotes = this.repository.findAllById(ids.toSet());
+        List<Localidade> pacotes = this.repository.findAllById(ids.toSet());
         return new PageImpl<>(pacotes, ids.getPageable(), ids.getTotalElements());
     }
 
@@ -33,7 +33,7 @@ public class PacoteService {
         }
     }
 
-    public Optional<Pacote> obterPacote(UUID id) {
+    public Optional<Localidade> obterLocalidade(UUID id) {
         return this.repository.findById(id);
     }
 }
