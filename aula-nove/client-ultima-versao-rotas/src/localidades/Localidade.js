@@ -5,14 +5,12 @@ export function LocalidadeDetails() {
 
   const localidade = useLoaderData();
 
-  console.log("Localidade: ", localidade)
-
   return (
     <div className="cardsContainer">
       <div
         style={{ padding: "24px", backgroundColor: "plum", borderRadius: "8px", width: "320px" }}
       >
-        descricao aqui
+        {localidade?.descricao}
       </div>
     </div>
   )

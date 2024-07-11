@@ -8,7 +8,7 @@ async function loadLocalidades(criteria) {
 }
 
 async function loadLocalidade(id) {
-  const endpoint = `http://localhost:8080/localidade/${id}`
+  const endpoint = `http://localhost:8080/localidades/${id}`
   const response = await fetch(endpoint);
   const data = await response.json();
   console.log(`Carregado localidade (payload : ${data})`);
