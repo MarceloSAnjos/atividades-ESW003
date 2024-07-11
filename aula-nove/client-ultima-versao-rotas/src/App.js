@@ -8,29 +8,34 @@ import Pacotes from "./pacotes/Pacotes.js";
 import PacoteDetails from "./pacotes/PacoteDetails.js";
 
 import { loadPacote, loadPacotes } from "./pacotes/stub.js";
+import { loadLocalidades } from "./localidades/stub.js";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
-    errorElement: <ErrorPage/>,
+    errorElement: <ErrorPage />,
     children: [{
       index: true,
-      element: <Home/>
+      element: <Home />
     }, {
       path: "/pacotes",
-      loader: async ({request}) => {
+      loader: async ({ request }) => {
         const criteria = new URL(request.url).searchParams.get('q');
         return loadPacotes(criteria);
       },
-      element: <Pacotes/>
+      element: <Pacotes />
     }, {
       path: "/pacotes/:id",
-      loader: async ({params}) => loadPacote(params.id),
-      element: <PacoteDetails/>
+      loader: async ({ params }) => loadPacote(params.id),
+      element: <PacoteDetails />
     }, {
       path: "/localidades",
-      element: <Localidades/>
+      loader: async ({ request }) => {
+        const criteria = new URL(request.url).searchParams.get("q");
+        return loadLocalidades(criteria);
+      },
+      element: <Localidades />
     }]
   }
 ]);
@@ -38,7 +43,7 @@ const router = createBrowserRouter([
 function App() {
 
   return (
-    <RouterProvider router={router}/>
+    <RouterProvider router={router} />
   )
 }
 
