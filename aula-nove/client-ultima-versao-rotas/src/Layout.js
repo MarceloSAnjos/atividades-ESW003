@@ -27,6 +27,8 @@ const MainNav = styled.nav`
 `
 const OutletWrapper = styled.main`
     margin: 24px;
+    width: 100%;
+
 `
 
 
@@ -38,7 +40,7 @@ const LinkEstilizado = (params) => {
             <Link to={to}>{params.children}</Link>
         </li>
     )
-} 
+}
 
 function Layout() {
     return (
@@ -51,11 +53,11 @@ function Layout() {
                 </ul>
             </MainNav>
             <OutletWrapper>
-               <Outlet/> 
+                <Outlet />
             </OutletWrapper>
         </MainDiv>
     )
-    
+
 }
 
 export default Layout;

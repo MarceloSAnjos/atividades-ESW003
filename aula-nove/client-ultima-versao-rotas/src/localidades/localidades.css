@@ -1,0 +1,5 @@
+.cardsContainer {
+  display: grid;
+  grid-template-areas: "card card card";
+  max-width: 1260px;
+}
