@@ -17,7 +17,7 @@ public interface LocalidadeRepository extends JpaRepository<Localidade, UUID> {
     @Query("select localidade.id from Localidade localidade")
     Page<UUID> findIds(Pageable pageable);
 
-    @Query("select localidade.id from Localidade localidade where localidade.descricao like :criteria")
+    @Query("select localidade.id from Localidade localidade where lower(localidade.descricao) like lower(:criteria)")
     Page<UUID> findIds(@Param("criteria") String criteria, Pageable pageable);
 
     @Override
