@@ -4,18 +4,19 @@ function Localidades() {
   const localidadesMock = [
     { id: 1, title: "Pindamonhangaba", descricao: "Uma cidade pequena." },
     {
-      id: 2, title: "Barril Radioativo da ZL", descricao: "Barril foi encontrado aberto próximo a Radial Leste na capital de SP. Polícia ainda procura suspeitos.A radioatividade está comendo solta. Não tentem virar o Hulk."
+      id: 2, title: "Barril Radioativo da ZL", descricao: "Barril foi encontrado aberto próximo a Radial Leste na capital de SP. Polícia ainda procura suspeitos. A radioatividade está comendo solta. Não tentem virar o Hulk."
     },
     { id: 3, title: "Pindamonhangaba", descricao: "Uma cidade pequena." },
     {
-      id: 4, title: "Barril Radioativo da ZL", descricao: "Barril foi encontrado aberto próximo a Radial Leste na capital de SP. Polícia ainda procura suspeitos.A radioatividade está comendo solta. Não tentem virar o Hulk."
-    }, { id: 5, title: "Pindamonhangaba", descricao: "Uma cidade pequena." },
+      id: 4, title: "Barril Radioativo da ZL", descricao: "Barril foi encontrado aberto próximo a Radial Leste na capital de SP. Polícia ainda procura suspeitos. A radioatividade está comendo solta. Não tentem virar o Hulk."
+    },
+    { id: 5, title: "Pindamonhangaba", descricao: "Uma cidade pequena." },
     {
-      id: 6, title: "Barril Radioativo da ZL", descricao: "Barril foi encontrado aberto próximo a Radial Leste na capital de SP. Polícia ainda procura suspeitos.A radioatividade está comendo solta. Não tentem virar o Hulk."
+      id: 6, title: "Barril Radioativo da ZL", descricao: "Barril foi encontrado aberto próximo a Radial Leste na capital de SP. Polícia ainda procura suspeitos. A radioatividade está comendo solta. Não tentem virar o Hulk."
     },
     { id: 7, title: "Pindamonhangaba", descricao: "Uma cidade pequena." },
     {
-      id: 8, title: "Barril Radioativo da ZL", descricao: "Barril foi encontrado aberto próximo a Radial Leste na capital de SP. Polícia ainda procura suspeitos.A radioatividade está comendo solta. Não tentem virar o Hulk."
+      id: 8, title: "Barril Radioativo da ZL", descricao: "Barril foi encontrado aberto próximo a Radial Leste na capital de SP. Polícia ainda procura suspeitos. A radioatividade está comendo solta. Não tentem virar o Hulk."
     },
   ];
 
