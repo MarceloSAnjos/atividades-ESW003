@@ -8,7 +8,8 @@ import Pacotes from "./pacotes/Pacotes.js";
 import PacoteDetails from "./pacotes/PacoteDetails.js";
 
 import { loadPacote, loadPacotes } from "./pacotes/stub.js";
-import { loadLocalidades } from "./localidades/stub.js";
+import { loadLocalidade, loadLocalidades } from "./localidades/stub.js";
+import { LocalidadeDetails } from "./localidades/Localidade.js";
 
 const router = createBrowserRouter([
   {
@@ -29,13 +30,18 @@ const router = createBrowserRouter([
       path: "/pacotes/:id",
       loader: async ({ params }) => loadPacote(params.id),
       element: <PacoteDetails />
-    }, {
+    },
+    {
       path: "/localidades",
       loader: async ({ request }) => {
         const criteria = new URL(request.url).searchParams.get("q");
         return loadLocalidades(criteria);
       },
       element: <Localidades />
+    }, {
+      path: "/localidades/:id",
+      loader: async ({ params }) => loadLocalidade(params.id),
+      element: <LocalidadeDetails />
     }]
   }
 ]);

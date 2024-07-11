@@ -42,10 +42,13 @@ function Localidades() {
   };
 
   const localidades = useLoaderData();
+  const selectLocalidade = (id) => {
+    navigate(`/localidades/${id}`);
+  }
 
   if (localidades?.length === 0) {
     return (
-      <p>Nenhum pacote carregado</p>
+      <p>Nenhuma localidade carregada</p>
     );
   }
 
@@ -56,7 +59,8 @@ function Localidades() {
       <CardsWrapper>
         {localidades?.map(localidade => {
           return (
-            <DescricaoWrapper key={localidade.id}>
+            <DescricaoWrapper key={localidade.id} onClick={() => selectLocalidade(localidade.id)}
+            >
               <p>{localidade.descricao}</p>
             </DescricaoWrapper>
           )
