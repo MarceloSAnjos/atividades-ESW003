@@ -29,3 +29,5 @@ bin/
 
 ### Java ###
 target/
+
+node_modules
